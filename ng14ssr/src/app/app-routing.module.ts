@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './components/pages/home/home.component';
 import { TestComponent } from './components/pages/test/test.component';
+import { FormComponent } from './components/pages/form/form.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,14 @@ const routes: Routes = [
     data:{
       title: 'Test Page'
     }
-  }
+  },
+  {
+    path: 'form',
+    component: FormComponent,
+    data:{
+      title: 'Form Page'
+    }
+  }  
 ];
 
 @NgModule({

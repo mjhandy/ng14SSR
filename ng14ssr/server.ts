@@ -33,11 +33,11 @@ export function app(): express.Express {
     maxAge: '1y'
   }));
 
-    // non ssr routes like dashboard or auth pages
-    server.get('/test', (req, res) => {
-      console.log('not rendering test page');
-      res.sendFile(distFolder + '/index.html');
-    });
+  // non ssr routes
+  server.get('/test/**', (req, res) => {
+    console.log('not rendering test page');
+    res.sendFile(distFolder + '/index.html');
+  });
 
   // All regular routes use the Universal engine
   server.get('*', (req, res) => {
