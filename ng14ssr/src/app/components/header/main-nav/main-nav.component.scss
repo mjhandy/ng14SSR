@@ -1,0 +1,7 @@
+/* Bootstrap Overrides */
+@import './../../../../scss/bootstrapOverrides';
+// Bootstrap required items
+@import './../../../../scss/componentInclude';
+
+@import '../../../../../node_modules/bootstrap/scss/nav';
+@import "../../../../../node_modules/bootstrap/scss/navbar";

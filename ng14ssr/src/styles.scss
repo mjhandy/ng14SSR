@@ -1,1 +1,17 @@
+/* Bootstrap Overrides */
+@import 'bootstrapOverrides';
+
+/* Importing Bootstrap SCSS file from node modules. */
+// @import 'bootstrap';
+
+/* Bootstrap include */ 
+@import 'bootStrapIncludes';
+
+/* mixins */
+@import 'mixins/mixins';
+
+/* helper classes */
+@import 'helperClasses';
+
+// Global items
 @import 'global';

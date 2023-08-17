@@ -29,6 +29,16 @@ export function app(): express.Express {
     maxAge: '1y'
   }));
 
+  server.get('/test', express.static(distFolder, {
+    maxAge: '1y'
+  }));
+
+    // non ssr routes like dashboard or auth pages
+    server.get('/test', (req, res) => {
+      console.log('not rendering test page');
+      res.sendFile(distFolder + '/index.html');
+    });
+
   // All regular routes use the Universal engine
   server.get('*', (req, res) => {
     res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
