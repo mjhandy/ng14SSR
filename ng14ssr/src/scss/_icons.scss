@@ -1,0 +1,19 @@
+@import 'componentInclude';
+
+.icon{  
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  &-circle{
+    transition: transform .7s ease-in-out;
+    &:hover{
+      transform: rotate(90deg);
+    }
+    &--red{
+      color: $red;
+    }
+    &--blue{
+      color: $blue;
+    }
+  }
+}

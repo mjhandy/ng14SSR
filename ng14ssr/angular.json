@@ -25,14 +25,19 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets/scss"
             ],
             "styles": [
-              "node_modules/bootstrap/scss/bootstrap.scss",
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "./node_modules/bootstrap/scss", 
+                "./src/scss"
+              ]
+            },            
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              
             ]
           },
           "configurations": {
@@ -98,8 +103,14 @@
               "src/favicon.ico",
               "src/assets"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "./node_modules/bootstrap/scss", 
+                "src/app/scss"
+              ]
+            },                
             "styles": [
-              "src/styles.scss"
+              "src/app/styles.scss"
             ],
             "scripts": []
           }
