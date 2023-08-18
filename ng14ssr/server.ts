@@ -34,7 +34,7 @@ export function app(): express.Express {
   }));
 
   // non ssr routes
-  server.get('/test/**', (req, res) => {
+  server.get('/test', (req, res) => {
     console.log('not rendering test page');
     res.sendFile(distFolder + '/index.html');
   });

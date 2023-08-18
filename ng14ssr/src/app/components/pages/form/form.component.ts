@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { 
     AbstractControl, 
     FormBuilder, 
@@ -16,7 +16,10 @@ import Validation from 'src/utils/validation';
 })
 export class FormComponent implements OnInit {
 
-  form: FormGroup = new FormGroup({
+  @ViewChild("submitButton", { static: false })
+  submitButton!: ElementRef;
+
+  private _form: FormGroup = new FormGroup({
     fullname: new FormControl(''),
     username: new FormControl(''),
     email: new FormControl(''),
@@ -24,7 +27,13 @@ export class FormComponent implements OnInit {
     confirmPassword: new FormControl(''),
     acceptTerms: new FormControl(false),
   });
-  
+  public get form(): FormGroup {
+    return this._form;
+  }
+  public set form(value: FormGroup) {
+    this._form = value;
+  }
+
   submitted = false;
 
   constructor(
@@ -59,13 +68,22 @@ export class FormComponent implements OnInit {
         validators: [Validation.match('password', 'confirmPassword')]
       }
     );
+   
+    // enable the submit button
+    
   }
 
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
   }
 
+  ngAfterViewInit(){
+    console.debug('view has initialized');
+    this.submitButton.nativeElement.removeAttribute('disabled');
+  }
+
   onSubmit(): void {
+    console.debug('form submit');
     this.submitted = true;
 
     if (this.form.invalid) {
@@ -73,6 +91,7 @@ export class FormComponent implements OnInit {
     }
 
     console.log(JSON.stringify(this.form.value, null, 2));
+
   }
 
   onReset(): void {
